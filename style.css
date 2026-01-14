@@ -71,6 +71,12 @@ body {
     color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+#main-content {
+    flex: 1;
 }
 
 /* Typography */
@@ -1419,22 +1425,13 @@ img {
 
 
 
-.join-content {
-    padding: 40px 350px;
-    border-radius: 100px;
-    background-position: 50%;
-    background: rgba(15, 15, 25, 0.55); /* semi-transparent */
-    backdrop-filter: blur(2px);
-    
 
-    border: 10px solid rgba(0, 200, 255, 0.25);
-}
 
 
 .join-title {
     color: var(--text-primary);
     font-size: 4.5rem;
-   
+    
     margin-bottom: 10px;
 }
 
