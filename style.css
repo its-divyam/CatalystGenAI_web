@@ -400,11 +400,17 @@ img {
 
     .hero-cta > * {
         width: 100%;                 /* buttons stretch to container */
-        max-width: 420px;           /* cap width for larger small screens */
+        max-width: 280px;           /* narrower cap for Android/mobile */
         min-width: 0;                /* allow shrink to avoid overflow */
         text-align: center;
         box-sizing: border-box;
         align-self: center;
+    }
+
+    /* Slightly smaller buttons inside hero for mobile */
+    .hero-cta .btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.95rem;
     }
 }
 
