@@ -1360,6 +1360,11 @@ img {
     padding: 160px 0;
     overflow: hidden;
 
+    display: flex;
+    align-items: center;      /* vertical center */
+    justify-content: center;  /* horizontal center */
+    text-align: center;
+
     /* Gradient background (full section) */
     background: linear-gradient(
         180deg,
@@ -1435,11 +1440,33 @@ img {
     margin-bottom: 10px;
 }
 
+.join-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+
 .join-subtitle {
     color: var(--text-secondary);
     font-size: 1.2rem;
     margin-bottom: var(--spacing-md);
 }
+
+
+@media (max-width: 768px) {
+    .join-section {
+        padding: 100px 20px;
+    }
+
+    .join-title {
+        font-size: 2.8rem;
+    }
+
+    .join-subtitle {
+        font-size: 1rem;
+    }
+}
+
 
 /* ========================================
    Testimonials Section
