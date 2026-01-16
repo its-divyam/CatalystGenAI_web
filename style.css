@@ -387,6 +387,7 @@ img {
     .hero-cta {
         flex-direction: column;   /* stack buttons */
         align-items: center;      /* center horizontally */
+        justify-items: auto;
         gap: 0.75rem;             /* consistent spacing */
         width: 50%;
     }
