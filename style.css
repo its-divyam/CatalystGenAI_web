@@ -392,13 +392,13 @@ img {
     gap: 0.75rem;
     width: 50%;
     animation: fadeInUp 1s ease 1s both;
-}
+    }
 
 
     .hero-cta > * {
     min-width: 220px;
     text-align: center;
-}
+    }
 }
 
 
