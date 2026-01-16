@@ -383,16 +383,17 @@ img {
     flex-wrap: wrap;
     animation: fadeInUp 1s ease 1s both;
 }
-@media (max-width: 768px) {
+@media (max-width: 480px) {
     .hero-cta {
     display: flex;
-    flex-direction: column;        /* vertical layout */
-    justify-content: center;       /* vertical centering */
-    align-items: center;           /* horizontal centering */
+    flex-direction: column;     /* vertical stack */
+    align-items: center;        /* horizontal center */
+    justify-content: center;    /* vertical center */
     gap: 0.75rem;
     width: 50%;
-    animation: fadeInUp 1s ease 1s both;
-    }
+        
+}
+
 
 
     .hero-cta > * {
