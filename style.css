@@ -419,7 +419,8 @@ img {
 
 .scroll-indicator {
     position: absolute;
-    bottom: var(--spacing-md);
+    /* push the indicator further down so it doesn't overlap CTAs */
+    bottom: calc(var(--spacing-md) + 2.5rem);
     left: 50%;
     transform: translateX(-50%);
     animation: bounce 2s infinite;
@@ -2296,6 +2297,11 @@ img {
         right: 1rem;
         width: 45px;
         height: 45px;
+    }
+
+    /* Ensure scroll indicator stays below CTA on small screens */
+    .hero .scroll-indicator {
+        bottom: calc(var(--spacing-md) + 3.5rem);
     }
 }
 
