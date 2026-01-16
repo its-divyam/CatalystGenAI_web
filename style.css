@@ -281,6 +281,11 @@ img {
     box-shadow: var(--shadow-glow);
 }
 
+
+
+
+
+    
 /* ========================================
    Hero Section
    ======================================== */
@@ -292,7 +297,10 @@ img {
     position: relative;
     overflow: hidden;
     padding-top: 80px;
+
+
 }
+
 
 .hero-bg {
     position: absolute;
@@ -318,6 +326,22 @@ img {
     gap: var(--spacing-sm);
     margin-bottom: var(--spacing-md);
 }
+.logo-container2 {
+    width: 600px;
+    max-height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: clamp(0.5rem, 1.5vw, 1rem);
+}
+
+
+
+.logo-container2 img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
 
 .club-name {
     font-size: clamp(3rem, 6vw, 5rem);
@@ -327,6 +351,7 @@ img {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     animation: fadeInUp 1s ease;
+    margin-top: 0;
 }
 
 .tagline {
@@ -334,7 +359,7 @@ img {
     color: var(--accent-cyan);
     font-weight: 600;
     animation: fadeInUp 1s ease 0.3s both;
-    min-height: 2.5rem;
+    min-height: unset;
 }
 
 .hero-subtitle {
@@ -787,6 +812,22 @@ img {
 
 
 /* Sponsors Section */
+
+.sponsor-link {
+    text-decoration: none;
+    display: block;
+}
+
+.sponsor-card {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sponsor-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
 .sponsors-section {
     background: radial-gradient(circle at top, #0f172a, #0a0a0f);
 }
@@ -862,13 +903,14 @@ img {
 
 .faculty-card {
     max-width: 600px;
-    margin: 0 auto;
+    margin: 10px 700px 70px;
     background: rgba(26, 26, 36, 0.5);
     backdrop-filter: blur(10px);
     border: 2px solid var(--accent-purple);
     border-radius: var(--radius-lg);
     padding: var(--spacing-md);
     display: flex;
+    justify-content: center; /* horizontal */
     gap: var(--spacing-md);
     align-items: center;
     transition: all var(--transition-normal);
@@ -915,6 +957,22 @@ img {
 .timeline-section {
     background: linear-gradient(180deg, var(--bg-secondary), var(--bg-primary));
 }
+
+.timeline-image {
+    width: 100%;
+    max-width: 320px;
+    margin: 0.75rem 0;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.timeline-image img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    background: #1a1a24; /* fallback */
+}
+
 
 .timeline {
     max-width: 800px;
