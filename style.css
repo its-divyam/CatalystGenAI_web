@@ -389,7 +389,7 @@ img {
     display: flex;
     flex-direction: column;      /* vertical stack */
     align-items: center;         /* horizontal center */
-    justify-content: center;     /* vertical center */
+    justify-content: right;     /* vertical center */
     gap: 0.75rem;
     width: 100%;                 /* full width */
     padding: 0 1rem;             /* side padding */
