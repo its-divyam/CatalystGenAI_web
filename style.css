@@ -390,11 +390,13 @@ img {
         gap: 0.75rem;             /* consistent spacing */
         width: 50%;
     }
-}
-.hero-cta > * {
+
+    .hero-cta > * {
     min-width: 220px;
     text-align: center;
 }
+}
+
 
 
 .scroll-indicator {
