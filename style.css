@@ -903,7 +903,7 @@ img {
 
 .faculty-card {
     max-width: 600px;
-    margin: 10px 700px 70px;
+    margin: 10px auto 70px;
     background: rgba(26, 26, 36, 0.5);
     backdrop-filter: blur(10px);
     border: 2px solid var(--accent-purple);
