@@ -372,10 +372,42 @@ if (!sessionStorage.getItem("isAdmin")) {
                     <label for="eventDescription">Description *</label>
                     <textarea id="eventDescription" rows="4" required></textarea>
                 </div>
-                <div class="form-group">
-                    <label for="eventImage">Event Image URL</label>
-                    <input type="url" id="eventImage" placeholder="https://example.com/image.jpg">
-                </div>
+                <!-- In eventModal -->
+<div class="form-group">
+    <label>Event Image</label>
+    <div class="upload-container">
+        <div class="upload-area" id="eventUploadArea">
+            <div class="upload-icon">
+                <i data-feather="upload-cloud"></i>
+            </div>
+            <p class="upload-text">Drag & drop your image here</p>
+            <p class="upload-subtext">or</p>
+            <button type="button" class="upload-btn" onclick="document.getElementById('eventFileInput').click()">
+                <i data-feather="upload"></i>
+                Browse Files
+            </button>
+            <input type="file" id="eventFileInput" class="upload-input" accept="image/*" onchange="handleEventImageUpload(event)">
+        </div>
+        <div class="upload-preview" id="eventPreview">
+            <img class="preview-image" id="eventPreviewImage" src="" alt="Preview">
+            <div class="preview-info">
+                <span class="preview-name" id="eventFileName"></span>
+                <span class="preview-size" id="eventFileSize"></span>
+            </div>
+            <button type="button" class="remove-btn" onclick="removeEventImage()">
+                <i data-feather="trash-2"></i>
+                Remove Image
+            </button>
+        </div>
+        <div class="image-url-fallback">
+            <p style="margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.875rem;">Or enter image URL:</p>
+            <div class="url-input-group">
+                <input type="url" id="eventImage" placeholder="https://example.com/image.jpg">
+                <button type="button" class="btn-secondary" onclick="useEventImageURL()">Use URL</button>
+            </div>
+        </div>
+    </div>
+</div>
                 <div class="modal-footer">
                     <button type="button" class="btn-secondary" onclick="closeModal('eventModal')">Cancel</button>
                     <button type="submit" class="btn-primary">Save Event</button>
@@ -398,10 +430,42 @@ if (!sessionStorage.getItem("isAdmin")) {
                     <label for="pastEventName">Event Name *</label>
                     <input type="text" id="pastEventName" required>
                 </div>
-                <div class="form-group">
-                    <label for="pastEventImage">Event Image URL *</label>
-                    <input type="url" id="pastEventImage" required>
-                </div>
+                <!-- In pastEventModal -->
+<div class="form-group">
+    <label>Event Image *</label>
+    <div class="upload-container">
+        <div class="upload-area" id="pastEventUploadArea">
+            <div class="upload-icon">
+                <i data-feather="upload-cloud"></i>
+            </div>
+            <p class="upload-text">Drag & drop your image here</p>
+            <p class="upload-subtext">or</p>
+            <button type="button" class="upload-btn" onclick="document.getElementById('pastEventFileInput').click()">
+                <i data-feather="upload"></i>
+                Browse Files
+            </button>
+            <input type="file" id="pastEventFileInput" class="upload-input" accept="image/*" onchange="handlePastEventImageUpload(event)">
+        </div>
+        <div class="upload-preview" id="pastEventPreview">
+            <img class="preview-image" id="pastEventPreviewImage" src="" alt="Preview">
+            <div class="preview-info">
+                <span class="preview-name" id="pastEventFileName"></span>
+                <span class="preview-size" id="pastEventFileSize"></span>
+            </div>
+            <button type="button" class="remove-btn" onclick="removePastEventImage()">
+                <i data-feather="trash-2"></i>
+                Remove Image
+            </button>
+        </div>
+        <div class="image-url-fallback">
+            <p style="margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.875rem;">Or enter image URL:</p>
+            <div class="url-input-group">
+                <input type="url" id="pastEventImage" placeholder="https://example.com/image.jpg" required>
+                <button type="button" class="btn-secondary" onclick="usePastEventImageURL()">Use URL</button>
+            </div>
+        </div>
+    </div>
+</div>
                 <div class="form-group">
                     <label for="pastEventDate">Date</label>
                     <input type="date" id="pastEventDate">
@@ -478,10 +542,42 @@ if (!sessionStorage.getItem("isAdmin")) {
                     <label for="testimonialText">Testimonial *</label>
                     <textarea id="testimonialText" rows="5" required></textarea>
                 </div>
-                <div class="form-group">
-                    <label for="testimonialImage">Profile Image URL</label>
-                    <input type="url" id="testimonialImage" placeholder="https://example.com/image.jpg">
-                </div>
+                <!-- In testimonialModal -->
+<div class="form-group">
+    <label>Profile Image</label>
+    <div class="upload-container">
+        <div class="upload-area" id="testimonialUploadArea">
+            <div class="upload-icon">
+                <i data-feather="upload-cloud"></i>
+            </div>
+            <p class="upload-text">Drag & drop profile image here</p>
+            <p class="upload-subtext">or</p>
+            <button type="button" class="upload-btn" onclick="document.getElementById('testimonialFileInput').click()">
+                <i data-feather="upload"></i>
+                Browse Files
+            </button>
+            <input type="file" id="testimonialFileInput" class="upload-input" accept="image/*" onchange="handleTestimonialImageUpload(event)">
+        </div>
+        <div class="upload-preview" id="testimonialPreview">
+            <img class="preview-image" id="testimonialPreviewImage" src="" alt="Preview">
+            <div class="preview-info">
+                <span class="preview-name" id="testimonialFileName"></span>
+                <span class="preview-size" id="testimonialFileSize"></span>
+            </div>
+            <button type="button" class="remove-btn" onclick="removeTestimonialImage()">
+                <i data-feather="trash-2"></i>
+                Remove Image
+            </button>
+        </div>
+        <div class="image-url-fallback">
+            <p style="margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.875rem;">Or enter image URL:</p>
+            <div class="url-input-group">
+                <input type="url" id="testimonialImage" placeholder="https://example.com/image.jpg">
+                <button type="button" class="btn-secondary" onclick="useTestimonialImageURL()">Use URL</button>
+            </div>
+        </div>
+    </div>
+</div>
                 <div class="modal-footer">
                     <button type="button" class="btn-secondary" onclick="closeModal('testimonialModal')">Cancel</button>
                     <button type="submit" class="btn-primary">Save Testimonial</button>
@@ -559,10 +655,42 @@ if (!sessionStorage.getItem("isAdmin")) {
                     <label for="blogContent">Content *</label>
                     <textarea id="blogContent" rows="8" required></textarea>
                 </div>
-                <div class="form-group">
-                    <label for="blogImage">Featured Image URL</label>
-                    <input type="url" id="blogImage" placeholder="https://example.com/image.jpg">
-                </div>
+                <!-- In blogModal -->
+<div class="form-group">
+    <label>Featured Image</label>
+    <div class="upload-container">
+        <div class="upload-area" id="blogUploadArea">
+            <div class="upload-icon">
+                <i data-feather="upload-cloud"></i>
+            </div>
+            <p class="upload-text">Drag & drop featured image here</p>
+            <p class="upload-subtext">or</p>
+            <button type="button" class="upload-btn" onclick="document.getElementById('blogFileInput').click()">
+                <i data-feather="upload"></i>
+                Browse Files
+            </button>
+            <input type="file" id="blogFileInput" class="upload-input" accept="image/*" onchange="handleBlogImageUpload(event)">
+        </div>
+        <div class="upload-preview" id="blogPreview">
+            <img class="preview-image" id="blogPreviewImage" src="" alt="Preview">
+            <div class="preview-info">
+                <span class="preview-name" id="blogFileName"></span>
+                <span class="preview-size" id="blogFileSize"></span>
+            </div>
+            <button type="button" class="remove-btn" onclick="removeBlogImage()">
+                <i data-feather="trash-2"></i>
+                Remove Image
+            </button>
+        </div>
+        <div class="image-url-fallback">
+            <p style="margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.875rem;">Or enter image URL:</p>
+            <div class="url-input-group">
+                <input type="url" id="blogImage" placeholder="https://example.com/image.jpg">
+                <button type="button" class="btn-secondary" onclick="useBlogImageURL()">Use URL</button>
+            </div>
+        </div>
+    </div>
+</div>
                 <div class="modal-footer">
                     <button type="button" class="btn-secondary" onclick="closeModal('blogModal')">Cancel</button>
                     <button type="submit" class="btn-primary">Publish Article</button>

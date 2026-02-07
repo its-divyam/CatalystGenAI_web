@@ -212,7 +212,7 @@ const CatalystAdmin = (function() {
         const container = document.querySelector(`#${containerId} .swiper-wrapper`);
         
         if (!container) {
-            console.error(`Container #${containerId} .swiper-wrapper not found`);
+            console.warn(`Testimonials container not found, skipping...`);
             return;
         }
         
@@ -239,17 +239,13 @@ const CatalystAdmin = (function() {
         }
         
         // Reinitialize Swiper if available
-        if (typeof Swiper !== 'undefined') {
-            new Swiper(`#${containerId}`, {
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true
-                },
-                autoplay: {
-                    delay: 5000
-                }
-            });
-        }
+       if (typeof Swiper !== 'undefined' && document.getElementById(containerId)) {
+    new Swiper(`#${containerId}`, {
+        pagination: { el: '.swiper-pagination', clickable: true },
+        autoplay: { delay: 5000 }
+    });
+}
+
     }
     
     /**
@@ -331,12 +327,13 @@ const CatalystAdmin = (function() {
         const pastEvents = getPastEvents();
         const projects = getProjects();
         const testimonials = getTestimonials();
-        
+        const blogs = getBlogPosts();
         // Update stats if elements exist
         updateElement('totalEvents', events.length);
         updateElement('totalPastEvents', pastEvents.length);
         updateElement('totalProjects', projects.length);
         updateElement('totalTestimonials', testimonials.length);
+        updateElement('totalBlogPosts', blogs.length);
     }
     
     /**
@@ -354,6 +351,21 @@ const CatalystAdmin = (function() {
         console.log('All content rendered from admin data');
     }
     
+
+    // Add this after the renderAll() function definition
+window.addEventListener('storage', function(event) {
+    // Check if the changed key is one of our storage keys
+    if (Object.values(STORAGE_KEYS).includes(event.key)) {
+        console.log('Storage change detected for key:', event.key);
+        
+        // Re-render the affected section
+        if (event.key === STORAGE_KEYS.blog) {
+            renderBlogPosts();
+            updateEventStats();
+        }
+        // Add similar conditions for other sections if needed
+    }
+});
     // ===================================
     // HELPER FUNCTIONS
     // ===================================
@@ -425,7 +437,7 @@ if (typeof window !== 'undefined') {
             if (localStorage.getItem('catalyst_events')) {
                 console.log('Auto-rendering Catalyst Admin content...');
                 // Uncomment the next line to enable auto-rendering
-                // CatalystAdmin.renderAll();
+                CatalystAdmin.renderAll();
             }
         });
     }

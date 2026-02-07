@@ -603,8 +603,15 @@ function getStorageData(key) {
     return JSON.parse(localStorage.getItem(key) || '[]');
 }
 
+// Add this helper function after setStorageData()
 function setStorageData(key, data) {
     localStorage.setItem(key, JSON.stringify(data));
+    // Trigger storage event manually for same-tab updates
+    window.dispatchEvent(new StorageEvent('storage', {
+        key: key,
+        newValue: JSON.stringify(data),
+        url: window.location.href
+    }));
 }
 
 function formatDate(dateString) {
@@ -654,6 +661,8 @@ function exportAllData() {
     
     showToast('Data exported successfully!');
 }
+
+
 
 function importData(event) {
     const file = event.target.files[0];
@@ -709,3 +718,5 @@ function copyIntegrationCode() {
 
 // Export data button
 document.getElementById('exportData')?.addEventListener('click', exportAllData);
+
+
