@@ -928,13 +928,14 @@ img {
     margin-top: var(--spacing-lg);
 }
 
+
+
 .subsection-title {
     text-align: center;
     color: var(--accent-blue);
     margin-bottom: var(--spacing-md);
     font-size: 1.8rem;
 }
-
 .faculty-card {
     max-width: 600px;
     margin: 10px auto 70px;
@@ -944,15 +945,31 @@ img {
     border-radius: var(--radius-lg);
     padding: var(--spacing-md);
     display: flex;
-    justify-content: center; /* horizontal */
+    justify-content: center;
     gap: var(--spacing-md);
     align-items: center;
-    transition: all var(--transition-normal);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+.faculty-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, var(--accent-blue), var(--accent-purple));
+    opacity: 0;
+    transition: 0.4s ease;
+    z-index: 0;
+}
+
+.faculty-card:hover::before {
+    opacity: 0.15;
 }
 
 .faculty-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-glow);
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 25px 45px rgba(168, 85, 247, 0.4);
 }
 
 .faculty-image-wrapper {
@@ -984,6 +1001,45 @@ img {
     color: var(--text-secondary);
     font-size: 0.95rem;
 }
+
+/* Make link look like a card */
+.faculty-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Image zoom */
+.faculty-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(168, 85, 247, 0.1);
+    position: relative;
+    transition: transform 0.4s ease;
+}
+
+.faculty-card:hover .faculty-image {
+    transform: scale(1.12);
+}
+
+/* Keep text above overlay */
+.faculty-info {
+    position: relative;
+    z-index: 1;
+}
+
+.faculty-image-wrapper {
+    position: relative;
+    z-index: 1;
+}
+
+/* Name glow */
+.faculty-card:hover .faculty-name {
+    color: var(--accent-blue);
+}
+
 
 /* ========================================
    Timeline Section
@@ -1484,15 +1540,19 @@ img {
     transform: translateX(-50%);
 
     width: 100%;
-    height: 70%;            /* 🔥 Image height control */
+    height: 70%;
 
     background-image: url("images/gencodex/gcx26.png");
-    background-size: 30%; /* try: contain / 120% */
+    background-size: 30%;
     background-position: right 30% bottom 70%;
     background-repeat: repeat;
 
+    opacity: 0.7;   /* 🔽 Adjust: 0.05 (very faint) → 0.3 (strong) */
+
     z-index: 1;
+    pointer-events: none; /* optional: keeps clicks working */
 }
+
 
 
 

@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Catalyst Gen AI</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="admin-styles.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">⚡</div>
+                <span class="logo-text">Catalyst Admin</span>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i data-feather="x"></i>
+            </button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="#dashboard" class="nav-item active" data-section="dashboard">
+                <i data-feather="home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#events" class="nav-item" data-section="events">
+                <i data-feather="calendar"></i>
+                <span>Events</span>
+            </a>
+            <a href="#past-events" class="nav-item" data-section="past-events">
+                <i data-feather="award"></i>
+                <span>Past Events</span>
+            </a>
+            <a href="#projects" class="nav-item" data-section="projects">
+                <i data-feather="code"></i>
+                <span>Projects</span>
+            </a>
+            <a href="#testimonials" class="nav-item" data-section="testimonials">
+                <i data-feather="message-square"></i>
+                <span>Testimonials</span>
+            </a>
+            <a href="#resources" class="nav-item" data-section="resources">
+                <i data-feather="book-open"></i>
+                <span>Resources</span>
+            </a>
+            <a href="#blog" class="nav-item" data-section="blog">
+                <i data-feather="file-text"></i>
+                <span>Blog</span>
+            </a>
+            <a href="#settings" class="nav-item" data-section="settings">
+                <i data-feather="settings"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button class="btn-export" id="exportData">
+                <i data-feather="download"></i>
+                <span>Export Data</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <button class="mobile-toggle" id="mobileToggle">
+                <i data-feather="menu"></i>
+            </button>
+            <div class="header-search">
+                <i data-feather="search"></i>
+                <input type="text" placeholder="Search...">
+            </div>
+            <div class="header-actions">
+                <button class="icon-btn">
+                    <i data-feather="bell"></i>
+                    <span class="badge">3</span>
+                </button>
+                <div class="user-profile">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect fill='%234f46e5' width='40' height='40'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='16' font-family='sans-serif'%3EA%3C/text%3E%3C/svg%3E" alt="Admin">
+                    <span>Admin</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="content-section active">
+            <div class="section-header">
+                <h1>Dashboard Overview</h1>
+                <p>Manage your website content efficiently</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon purple">
+                        <i data-feather="calendar"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="totalEvents">0</h3>
+                        <p>Upcoming Events</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i data-feather="code"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="totalProjects">0</h3>
+                        <p>Active Projects</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <i data-feather="message-square"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="totalTestimonials">0</h3>
+                        <p>Testimonials</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange">
+                        <i data-feather="file-text"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="totalBlogs">0</h3>
+                        <p>Blog Posts</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quick-actions">
+                <h2>Quick Actions</h2>
+                <div class="action-grid">
+                    <button class="action-card" onclick="showSection('events')">
+                        <i data-feather="plus-circle"></i>
+                        <span>Add Event</span>
+                    </button>
+                    <button class="action-card" onclick="showSection('projects')">
+                        <i data-feather="code"></i>
+                        <span>Add Project</span>
+                    </button>
+                    <button class="action-card" onclick="showSection('testimonials')">
+                        <i data-feather="star"></i>
+                        <span>Add Testimonial</span>
+                    </button>
+                    <button class="action-card" onclick="showSection('blog')">
+                        <i data-feather="edit"></i>
+                        <span>Write Blog</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section id="events" class="content-section">
+            <div class="section-header">
+                <h1>Upcoming Events</h1>
+                <button class="btn-primary" onclick="openModal('eventModal')">
+                    <i data-feather="plus"></i>
+                    Add Event
+                </button>
+            </div>
+
+            <div class="calendar-container">
+                <div id="calendar"></div>
+            </div>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Event Name</th>
+                            <th>Date</th>
+                            <th>Location</th>
+                            <th>Type</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="eventsTableBody">
+                        <!-- Events will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Past Events Section -->
+        <section id="past-events" class="content-section">
+            <div class="section-header">
+                <h1>Past Events & Highlights</h1>
+                <button class="btn-primary" onclick="openModal('pastEventModal')">
+                    <i data-feather="plus"></i>
+                    Add Past Event
+                </button>
+            </div>
+
+            <div class="cards-grid" id="pastEventsGrid">
+                <!-- Past events will be populated here -->
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="content-section">
+            <div class="section-header">
+                <h1>Projects Showcase</h1>
+                <button class="btn-primary" onclick="openModal('projectModal')">
+                    <i data-feather="plus"></i>
+                    Add Project
+                </button>
+            </div>
+
+            <div class="cards-grid" id="projectsGrid">
+                <!-- Projects will be populated here -->
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="content-section">
+            <div class="section-header">
+                <h1>Testimonials</h1>
+                <button class="btn-primary" onclick="openModal('testimonialModal')">
+                    <i data-feather="plus"></i>
+                    Add Testimonial
+                </button>
+            </div>
+
+            <div class="cards-grid" id="testimonialsGrid">
+                <!-- Testimonials will be populated here -->
+            </div>
+        </section>
+
+        <!-- Resources Section -->
+        <section id="resources" class="content-section">
+            <div class="section-header">
+                <h1>Learning Resources</h1>
+                <button class="btn-primary" onclick="openModal('resourceModal')">
+                    <i data-feather="plus"></i>
+                    Add Resource
+                </button>
+            </div>
+
+            <div class="cards-grid" id="resourcesGrid">
+                <!-- Resources will be populated here -->
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog" class="content-section">
+            <div class="section-header">
+                <h1>Blog & Articles</h1>
+                <button class="btn-primary" onclick="openModal('blogModal')">
+                    <i data-feather="plus"></i>
+                    Write Article
+                </button>
+            </div>
+
+            <div class="cards-grid" id="blogGrid">
+                <!-- Blog posts will be populated here -->
+            </div>
+        </section>
+
+        <!-- Settings Section -->
+        <section id="settings" class="content-section">
+            <div class="section-header">
+                <h1>Settings</h1>
+            </div>
+
+            <div class="settings-container">
+                <div class="settings-card">
+                    <h3>Data Management</h3>
+                    <div class="settings-actions">
+                        <button class="btn-secondary" onclick="exportAllData()">
+                            <i data-feather="download"></i>
+                            Export All Data
+                        </button>
+                        <button class="btn-secondary" onclick="document.getElementById('importFile').click()">
+                            <i data-feather="upload"></i>
+                            Import Data
+                        </button>
+                        <input type="file" id="importFile" accept=".json" style="display: none;" onchange="importData(event)">
+                        <button class="btn-danger" onclick="clearAllData()">
+                            <i data-feather="trash-2"></i>
+                            Clear All Data
+                        </button>
+                    </div>
+                </div>
+
+                <div class="settings-card">
+                    <h3>Integration Code</h3>
+                    <p>Copy this code to integrate the admin dashboard with your website:</p>
+                    <pre class="code-block"><code id="integrationCode">// Add this script to your website
+&lt;script src="admin-integration.js"&gt;&lt;/script&gt;
+
+// Initialize the integration
+&lt;script&gt;
+  CatalystAdmin.init({
+    apiEndpoint: 'YOUR_API_ENDPOINT',
+    autoSync: true
+  });
+&lt;/script&gt;</code></pre>
+                    <button class="btn-secondary" onclick="copyIntegrationCode()">
+                        <i data-feather="copy"></i>
+                        Copy Code
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modals -->
+    <!-- Event Modal -->
+    <div class="modal" id="eventModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add Event</h2>
+                <button class="close-btn" onclick="closeModal('eventModal')">
+                    <i data-feather="x"></i>
+                </button>
+            </div>
+            <form id="eventForm" class="modal-form">
+                <div class="form-group">
+                    <label for="eventName">Event Name *</label>
+                    <input type="text" id="eventName" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="eventDate">Date *</label>
+                        <input type="date" id="eventDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventLocation">Location *</label>
+                        <input type="text" id="eventLocation" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="eventType">Event Type *</label>
+                    <select id="eventType" required>
+                        <option value="">Select type</option>
+                        <option value="Workshop">Workshop</option>
+                        <option value="Hackathon">Hackathon</option>
+                        <option value="Guest Lecture">Guest Lecture</option>
+                        <option value="Seminar">Seminar</option>
+                        <option value="Competition">Competition</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="eventDescription">Description *</label>
+                    <textarea id="eventDescription" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="eventImage">Event Image URL</label>
+                    <input type="url" id="eventImage" placeholder="https://example.com/image.jpg">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" onclick="closeModal('eventModal')">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Event</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Past Event Modal -->
+    <div class="modal" id="pastEventModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add Past Event</h2>
+                <button class="close-btn" onclick="closeModal('pastEventModal')">
+                    <i data-feather="x"></i>
+                </button>
+            </div>
+            <form id="pastEventForm" class="modal-form">
+                <div class="form-group">
+                    <label for="pastEventName">Event Name *</label>
+                    <input type="text" id="pastEventName" required>
+                </div>
+                <div class="form-group">
+                    <label for="pastEventImage">Event Image URL *</label>
+                    <input type="url" id="pastEventImage" required>
+                </div>
+                <div class="form-group">
+                    <label for="pastEventDate">Date</label>
+                    <input type="date" id="pastEventDate">
+                </div>
+                <div class="form-group">
+                    <label for="pastEventDescription">Description</label>
+                    <textarea id="pastEventDescription" rows="3"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" onclick="closeModal('pastEventModal')">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Event</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Project Modal -->
+    <div class="modal" id="projectModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add Project</h2>
+                <button class="close-btn" onclick="closeModal('projectModal')">
+                    <i data-feather="x"></i>
+                </button>
+            </div>
+            <form id="projectForm" class="modal-form">
+                <div class="form-group">
+                    <label for="projectTitle">Project Title *</label>
+                    <input type="text" id="projectTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="projectDescription">Description *</label>
+                    <textarea id="projectDescription" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="projectGithub">GitHub Repository URL *</label>
+                    <input type="url" id="projectGithub" required placeholder="https://github.com/username/repo">
+                </div>
+                <div class="form-group">
+                    <label for="projectTags">Technologies (comma-separated) *</label>
+                    <input type="text" id="projectTags" required placeholder="Python, TensorFlow, Flask">
+                </div>
+                <div class="form-group">
+                    <label for="projectIcon">Icon (Feather icon name)</label>
+                    <input type="text" id="projectIcon" placeholder="code, cpu, brain, etc.">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" onclick="closeModal('projectModal')">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Project</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Testimonial Modal -->
+    <div class="modal" id="testimonialModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add Testimonial</h2>
+                <button class="close-btn" onclick="closeModal('testimonialModal')">
+                    <i data-feather="x"></i>
+                </button>
+            </div>
+            <form id="testimonialForm" class="modal-form">
+                <div class="form-group">
+                    <label for="testimonialName">Name *</label>
+                    <input type="text" id="testimonialName" required>
+                </div>
+                <div class="form-group">
+                    <label for="testimonialRole">Role/Year *</label>
+                    <input type="text" id="testimonialRole" required placeholder="e.g., Final Year, AIML">
+                </div>
+                <div class="form-group">
+                    <label for="testimonialText">Testimonial *</label>
+                    <textarea id="testimonialText" rows="5" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="testimonialImage">Profile Image URL</label>
+                    <input type="url" id="testimonialImage" placeholder="https://example.com/image.jpg">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" onclick="closeModal('testimonialModal')">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Testimonial</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Resource Modal -->
+    <div class="modal" id="resourceModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add Resource</h2>
+                <button class="close-btn" onclick="closeModal('resourceModal')">
+                    <i data-feather="x"></i>
+                </button>
+            </div>
+            <form id="resourceForm" class="modal-form">
+                <div class="form-group">
+                    <label for="resourceTitle">Title *</label>
+                    <input type="text" id="resourceTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="resourceDescription">Description *</label>
+                    <textarea id="resourceDescription" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="resourceURL">Resource URL *</label>
+                    <input type="url" id="resourceURL" required>
+                </div>
+                <div class="form-group">
+                    <label for="resourceIcon">Icon (Feather icon name)</label>
+                    <input type="text" id="resourceIcon" placeholder="book-open, github, youtube, etc.">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" onclick="closeModal('resourceModal')">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Resource</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Blog Modal -->
+    <div class="modal" id="blogModal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h2>Write Article</h2>
+                <button class="close-btn" onclick="closeModal('blogModal')">
+                    <i data-feather="x"></i>
+                </button>
+            </div>
+            <form id="blogForm" class="modal-form">
+                <div class="form-group">
+                    <label for="blogTitle">Title *</label>
+                    <input type="text" id="blogTitle" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="blogCategory">Category *</label>
+                        <select id="blogCategory" required>
+                            <option value="">Select category</option>
+                            <option value="Tutorial">Tutorial</option>
+                            <option value="AI News">AI News</option>
+                            <option value="Research">Research</option>
+                            <option value="Case Study">Case Study</option>
+                            <option value="Opinion">Opinion</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="blogReadTime">Read Time (minutes)</label>
+                        <input type="number" id="blogReadTime" placeholder="5">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="blogContent">Content *</label>
+                    <textarea id="blogContent" rows="8" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="blogImage">Featured Image URL</label>
+                    <input type="url" id="blogImage" placeholder="https://example.com/image.jpg">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" onclick="closeModal('blogModal')">Cancel</button>
+                    <button type="submit" class="btn-primary">Publish Article</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i data-feather="check-circle"></i>
+        <span id="toastMessage">Success!</span>
+    </div>
+
+    <!-- Scripts -->
+    <script src="admin-script.js"></script>
+</body>
+</html>
