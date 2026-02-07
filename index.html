@@ -55,7 +55,8 @@
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#gallery" class="nav-link">Gallery</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
-                <li><a href="#join" class="btn-nav">Register</a></li>
+                <li><a href="javascript:void(0)" id="adminBtn" class="btn-nav">Admin</a></li>
+
             </ul>
         </div>
     </nav>
@@ -1314,5 +1315,21 @@
     if (typeof feather !== 'undefined') feather.replace();
   });
 </script>
+
+<script>
+document.getElementById("adminBtn").addEventListener("click", () => {
+    const pass = prompt("Enter Admin Password:");
+
+    const adminPassword = "divyamisadmin"; // change this
+
+    if (pass === adminPassword) {
+        sessionStorage.setItem("isAdmin", "true");
+        window.location.href = "admin/admin-dashboard.html"; // your admin page
+    } else {
+        alert("❌ Access Denied");
+    }
+});
+</script>
+
 </body>
 </html>
